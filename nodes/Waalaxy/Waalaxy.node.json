@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-waalaxy",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": [
+		"Communication",
+		"Marketing"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://waalaxy-staging-om-1dde937.zuplo.site/introduction"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://waalaxy-staging-om-1dde937.zuplo.site/api"
+			}
+		]
+	}
+}

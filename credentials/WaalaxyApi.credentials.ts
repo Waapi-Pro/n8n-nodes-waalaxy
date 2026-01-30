@@ -1,0 +1,43 @@
+import type {
+	IAuthenticate,
+	Icon,
+	ICredentialTestRequest,
+	ICredentialType,
+	INodeProperties,
+} from 'n8n-workflow';
+
+export class WaalaxyApi implements ICredentialType {
+	name = 'waalaxyApi';
+
+	displayName = 'Waalaxy API';
+
+	icon: Icon = { light: 'file:../icons/waalien.svg', dark: 'file:../icons/waalien.dark.svg' };
+
+	documentationUrl = 'https://waalaxy-staging-om-1dde937.zuplo.site/';
+	properties: INodeProperties[] = [
+		{
+			displayName: 'Access Token',
+			name: 'accessToken',
+			type: 'string',
+			typeOptions: { password: true },
+			default: '',
+		},
+	];
+
+	authenticate: IAuthenticate = {
+		type: 'generic',
+		properties: {
+			headers: {
+				Authorization: '=Bearer {{$credentials.accessToken}}',
+			},
+		},
+	};
+
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://waalaxy-staging-om-1dde937.zuplo.app/',
+			url: 'integrations/test',
+			method: 'GET',
+		},
+	};
+}
