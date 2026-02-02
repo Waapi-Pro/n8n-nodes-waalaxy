@@ -1,11 +1,6 @@
 import type { ILoadOptionsFunctions, INodeListSearchResult } from 'n8n-workflow';
 import { waalaxyApiRequest } from '../shared/transport';
 
-type CampaignSearchItem = {
-	value: string;
-	name: string;
-};
-
 type CampaignSearchResponseItem = {
 	_id: string;
 	name: string;
@@ -16,7 +11,12 @@ type CampaignSearchResponse = {
 	campaigns: CampaignSearchResponseItem[];
 };
 
-type RepositorySearchResponse = {
+type CampaignSearchItem = {
+	value: string;
+	name: string;
+};
+
+type CampaignSearchOptions = {
 	items: CampaignSearchItem[];
 	total_count: number;
 };
@@ -26,7 +26,7 @@ export async function getCampaigns(this: ILoadOptionsFunctions): Promise<INodeLi
 		total: 0,
 		campaigns: [],
 	};
-	const responseData: RepositorySearchResponse = {
+	const responseData: CampaignSearchOptions = {
 		items: [],
 		total_count: 0,
 	};
@@ -34,7 +34,7 @@ export async function getCampaigns(this: ILoadOptionsFunctions): Promise<INodeLi
 	try {
 		response = await waalaxyApiRequest.call(this, 'GET', 'campaigns/getAll', {});
 	} catch {
-		// will fail if the owner does not have any repositories
+		// do nothing
 	}
 	responseData.total_count = response.total;
 	response.campaigns.forEach((item: CampaignSearchResponseItem) => {
