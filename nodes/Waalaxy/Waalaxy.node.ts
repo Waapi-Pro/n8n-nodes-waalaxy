@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import { type INodeType, type INodeTypeDescription } from 'n8n-workflow';
 import { getCampaigns } from './listSearch/getCampaigns';
 import { getProspectLists } from './listSearch/getProspectLists';
 import { prospectDescription } from './resources/prospect';
@@ -7,7 +7,10 @@ export class Waalaxy implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Waalaxy',
 		name: 'waalaxy',
-		icon: { light: 'file:../../icons/waalien.svg', dark: 'file:../../icons/waalien.dark.svg' },
+		icon: {
+			light: 'file:../../icons/logo-api-gradient.svg',
+			dark: 'file:../../icons/logo-api-gradient-dark.svg',
+		},
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -16,8 +19,8 @@ export class Waalaxy implements INodeType {
 			name: 'Waalaxy',
 		},
 		usableAsTool: true,
-		inputs: [NodeConnectionTypes.Main],
-		outputs: [NodeConnectionTypes.Main],
+		inputs: ['main'],
+		outputs: ['main'],
 		credentials: [
 			{
 				name: 'waalaxyApi',
@@ -30,7 +33,7 @@ export class Waalaxy implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: 'https://waalaxy-staging-om-1dde937.zuplo.app/',
+			baseURL: 'https://developers.waalaxy.com/',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',

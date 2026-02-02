@@ -13,7 +13,7 @@ export class WaalaxyApi implements ICredentialType {
 
 	icon: Icon = { light: 'file:../icons/waalien.svg', dark: 'file:../icons/waalien.dark.svg' };
 
-	documentationUrl = 'https://waalaxy-staging-om-1dde937.zuplo.site/';
+	documentationUrl = 'https://docs.waalaxy.com/';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Access Token',
@@ -35,7 +35,7 @@ export class WaalaxyApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://waalaxy-staging-om-1dde937.zuplo.app/',
+			baseURL: 'https://developers.waalaxy.com/',
 			url: 'integrations/test',
 			method: 'GET',
 		},
