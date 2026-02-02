@@ -38,7 +38,7 @@
             "dist/credentials/WaalaxyApi.credentials.js"
         ],
         "nodes": [
-            "dist/nodes/Waalaxy/Waalaxy.node.js"
+            "dist/nodes/Waalaxy.node.js"
         ]
     },
     "devDependencies": {
