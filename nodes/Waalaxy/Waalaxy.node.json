@@ -9,12 +9,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://waalaxy-staging-om-1dde937.zuplo.site/introduction"
+				"url": "https://docs.waalaxy.com/introduction"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://waalaxy-staging-om-1dde937.zuplo.site/api"
+				"url": "https://docs.waalaxy.com/api"
 			}
 		]
 	}

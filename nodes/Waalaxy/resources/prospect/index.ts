@@ -16,10 +16,10 @@ export const prospectDescription: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Add to List and Campaign',
-				value: 'addToListAndCampaign',
-				action: 'Add prospects to list and campaign',
-				description: 'Add prospects to a prospect list and optionally to a campaign',
+				name: 'Import',
+				value: 'importProspect',
+				action: 'Import',
+				description: 'Import a prospect in the Waalaxy CRM',
 				routing: {
 					request: {
 						method: 'POST',
@@ -40,22 +40,81 @@ export const prospectDescription: INodeProperties[] = [
 										url: string;
 										firstName?: string;
 										lastName?: string;
+										gender?: 'male' | 'female' | 'undetermined';
+										headline?: string;
+										occupation?: string;
+										email?: string;
+										phoneNumbers?: {
+											phoneNumberValues?: Array<{
+												number?: string;
+												type?: string;
+											}>;
+										};
+										region?: string;
+										birthdayDay?: number;
+										birthdayMonth?: number;
+										companyName?: string;
+										companyLinkedinUrl?: string;
+										companyWebsite?: string;
 									}>;
 								};
 
 								const prospects = (prospectsParam.prospectValues || []).map((p) => {
 									const prospect: {
 										url: string;
-										customProfile?: { firstName?: string; lastName?: string };
+										customProfile?: {
+											firstName?: string;
+											lastName?: string;
+											gender?: 'male' | 'female' | 'undetermined';
+											headline?: string;
+											occupation?: string;
+											email?: string;
+											phoneNumbers?: Array<{ number?: string; type?: string }>;
+											region?: string;
+											birthday?: { day?: number; month?: number };
+											company?: { name?: string; linkedinUrl?: string; website?: string };
+										};
 									} = {
 										url: p.url,
 									};
 
-									if (p.firstName || p.lastName) {
-										prospect.customProfile = {
-											...(p.firstName && { firstName: p.firstName }),
-											...(p.lastName && { lastName: p.lastName }),
+									const customProfile: typeof prospect.customProfile = {};
+
+									if (p.firstName) customProfile.firstName = p.firstName;
+									if (p.lastName) customProfile.lastName = p.lastName;
+									if (p.gender) customProfile.gender = p.gender;
+									if (p.headline) customProfile.headline = p.headline;
+									if (p.occupation) customProfile.occupation = p.occupation;
+									if (p.email) customProfile.email = p.email;
+									if (p.region) customProfile.region = p.region;
+
+									// Handle phone numbers
+									const phoneNumberValues = p.phoneNumbers?.phoneNumberValues;
+									if (phoneNumberValues && phoneNumberValues.length > 0) {
+										customProfile.phoneNumbers = phoneNumberValues
+											.filter((pn) => pn.number)
+											.map((pn) => ({ number: pn.number, type: pn.type }));
+									}
+
+									// Handle birthday
+									if (p.birthdayDay || p.birthdayMonth) {
+										customProfile.birthday = {
+											...(p.birthdayDay && { day: p.birthdayDay }),
+											...(p.birthdayMonth && { month: p.birthdayMonth }),
 										};
+									}
+
+									// Handle company
+									if (p.companyName || p.companyLinkedinUrl || p.companyWebsite) {
+										customProfile.company = {
+											...(p.companyName && { name: p.companyName }),
+											...(p.companyLinkedinUrl && { linkedinUrl: p.companyLinkedinUrl }),
+											...(p.companyWebsite && { website: p.companyWebsite }),
+										};
+									}
+
+									if (Object.keys(customProfile).length > 0) {
+										prospect.customProfile = customProfile;
 									}
 
 									return prospect;
@@ -77,7 +136,7 @@ export const prospectDescription: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'addToListAndCampaign',
+		default: 'importProspect',
 	},
 	...addToListAndCampaignDescription,
 ];

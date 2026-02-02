@@ -19,7 +19,7 @@ export async function waalaxyApiRequest(
 		method: method,
 		qs,
 		body,
-		url: `https://waalaxy-staging-om-1dde937.zuplo.app/${resource}`,
+		url: `https://developers.waalaxy.com/${resource}`,
 		json: true,
 	};
 

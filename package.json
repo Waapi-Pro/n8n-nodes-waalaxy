@@ -1,5 +1,5 @@
 {
-    "name": "n8n-nodes-waalaxy",
+    "name": "@waapi-pro/n8n-nodes-waalaxy",
     "version": "0.1.0",
     "description": "Waalaxy integration for n8n",
     "license": "MIT",
@@ -7,6 +7,10 @@
     "keywords": [
         "n8n-community-node-package"
     ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
+    },
     "author": {
         "name": "Simon Moulin",
         "email": "simon.moulin@waapi.fr"
