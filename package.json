@@ -14,8 +14,8 @@
         "access": "public"
     },
     "author": {
-        "name": "Simon Moulin",
-        "email": "simon.moulin@waapi.fr"
+        "name": "Waalaxy developers",
+        "email": "developers@waalaxy.com"
     },
     "engines": {
         "node": ">=22.0.0"
