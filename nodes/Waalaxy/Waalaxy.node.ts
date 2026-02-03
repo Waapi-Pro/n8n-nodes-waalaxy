@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import { type INodeType, type INodeTypeDescription } from 'n8n-workflow';
 import { getCampaigns } from './listSearch/getCampaigns';
 import { getProspectLists } from './listSearch/getProspectLists';
 import { prospectDescription } from './resources/prospect';
@@ -19,8 +19,8 @@ export class Waalaxy implements INodeType {
 			name: 'Waalaxy',
 		},
 		usableAsTool: true,
-		inputs: [NodeConnectionTypes.Main],
-		outputs: [NodeConnectionTypes.Main],
+		inputs: ['main'],
+		outputs: ['main'],
 		credentials: [
 			{
 				name: 'waalaxyApi',
