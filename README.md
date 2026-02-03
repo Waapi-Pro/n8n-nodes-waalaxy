@@ -32,7 +32,7 @@ This is an n8n community node that integrates [Waalaxy](https://waalaxy.com) wit
 1. Open your n8n instance
 2. Go to **Settings** > **Community Nodes**
 3. Select **Install**
-4. Enter `n8n-nodes-waalaxy` in the input field
+4. Enter `@waapi/n8n-nodes-waalaxy` in the input field
 5. Agree to the risks of using community nodes
 6. Click **Install**
 
@@ -41,7 +41,7 @@ This is an n8n community node that integrates [Waalaxy](https://waalaxy.com) wit
 To install this node manually, run the following command in your n8n installation directory:
 
 ```bash
-npm install n8n-nodes-waalaxy
+npm install @waapi/n8n-nodes-waalaxy
 ```
 
 Then restart your n8n instance.
@@ -84,11 +84,22 @@ Add prospects to a prospect list and optionally enroll them in a campaign.
 
 **Prospect Fields:**
 
-| Field        | Type   | Required | Description                              |
-| ------------ | ------ | -------- | ---------------------------------------- |
-| LinkedIn URL | String | Yes      | The LinkedIn profile URL of the prospect |
-| First Name   | String | No       | First name of the prospect               |
-| Last Name    | String | No       | Last name of the prospect                |
+| Field                | Type       | Required | Description                                            |
+| -------------------- | ---------- | -------- | ------------------------------------------------------ |
+| LinkedIn URL         | String     | Yes      | The LinkedIn profile URL of the prospect               |
+| First Name           | String     | No       | First name of the prospect                             |
+| Last Name            | String     | No       | Last name of the prospect                              |
+| Email                | String     | No       | Email address of the prospect                          |
+| Company Name         | String     | No       | The name of the prospect's company                     |
+| Company LinkedIn URL | String     | No       | The LinkedIn URL of the prospect's company             |
+| Company Website      | String     | No       | The website of the prospect's company                  |
+| Headline             | String     | No       | The headline of the prospect (e.g. LinkedIn headline)  |
+| Occupation           | String     | No       | The occupation of the prospect                         |
+| Region               | String     | No       | The region/location of the prospect                    |
+| Gender               | Select     | No       | Gender of the prospect (Male, Female, Undetermined)    |
+| Birthday Day         | Number     | No       | The day of the month of the prospect's birthday (1-31) |
+| Birthday Month       | Number     | No       | The month of the prospect's birthday (1-12)            |
+| Phone Numbers        | Collection | No       | Phone numbers with type (Mobile, Work, Home, Other)    |
 
 ## Usage Examples
 
@@ -176,7 +187,7 @@ npm link
 3. In your n8n directory, link the package:
 
 ```bash
-npm link n8n-nodes-waalaxy
+npm link @waapi/n8n-nodes-waalaxy
 ```
 
 4. Start n8n:
