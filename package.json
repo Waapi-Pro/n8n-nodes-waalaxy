@@ -1,6 +1,6 @@
 {
     "name": "@waapi/n8n-nodes-waalaxy",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Waalaxy integration for n8n",
     "license": "MIT",
     "homepage": "",
