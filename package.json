@@ -5,7 +5,9 @@
     "license": "MIT",
     "homepage": "",
     "keywords": [
-        "n8n-community-node-package"
+        "n8n-community-node-package",
+        "n8n-nodes",
+        "n8n"
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
@@ -15,6 +17,10 @@
         "name": "Simon Moulin",
         "email": "simon.moulin@waapi.fr"
     },
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "packageManager": "npm@10.8.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/Waapi-Pro/n8n-nodes-waalaxy"
@@ -33,7 +39,6 @@
     ],
     "n8n": {
         "n8nNodesApiVersion": 1,
-        "strict": true,
         "credentials": [
             "dist/credentials/WaalaxyApi.credentials.js"
         ],
