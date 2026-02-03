@@ -1,6 +1,6 @@
 {
     "name": "@waapi/n8n-nodes-waalaxy",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "description": "Waalaxy integration for n8n",
     "license": "MIT",
     "homepage": "",
@@ -38,7 +38,7 @@
             "dist/credentials/WaalaxyApi.credentials.js"
         ],
         "nodes": [
-            "dist/nodes/Waalaxy.node.js"
+            "dist/nodes/Waalaxy/Waalaxy.node.js"
         ]
     },
     "devDependencies": {
