@@ -37,6 +37,7 @@ export class Waalaxy implements INodeType {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
+				'x-req-integration-origin': 'n8n',
 			},
 		},
 		properties: [

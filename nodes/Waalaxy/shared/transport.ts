@@ -20,6 +20,9 @@ export async function waalaxyApiRequest(
 		qs,
 		body,
 		url: `https://developers.waalaxy.com/${resource}`,
+		headers: {
+			'x-req-integration-origin': 'n8n',
+		},
 		json: true,
 	};
 

@@ -29,6 +29,7 @@ export class WaalaxyApi implements ICredentialType {
 		properties: {
 			headers: {
 				Authorization: '=Bearer {{$credentials.accessToken}}',
+				'x-req-integration-origin': 'n8n',
 			},
 		},
 	};
