@@ -233,4 +233,4 @@ n8n-nodes-waalaxy/
 If you encounter any issues or have questions:
 
 - Open an issue on [GitHub](https://github.com/Waapi-Pro/n8n-nodes-waalaxy/issues)
-- Contact the author at simon.moulin@waalaxy.fr
+- Contact the author at fabien.turgut@waalaxy.com
