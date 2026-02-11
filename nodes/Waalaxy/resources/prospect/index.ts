@@ -143,8 +143,8 @@ export const prospectDescription: INodeProperties[] = [
 									const errorBody = (items[0]?.json || {}) as JsonObject;
 
 									let message =
-										'detail' in errorBody
-											? (errorBody.detail as string)
+										'title' in errorBody
+											? (errorBody.title as string)
 											: (errorBody.message as string);
 
 									if ('code' in errorBody && errorBody.code === 'M000401-001') {
