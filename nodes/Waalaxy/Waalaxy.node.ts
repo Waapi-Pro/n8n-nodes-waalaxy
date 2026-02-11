@@ -14,7 +14,7 @@ export class Waalaxy implements INodeType {
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Consume data from the Waalaxy API',
+		description: `We make LinkedIn outreach f*cking easy. Reach 800+ prospects on LinkedIn every month. Auto-follow up until they reply. No complex setup. 150,000+ professionals (sales reps, founders, recruiters) use Waalaxy to get replies and sign new clients.`,
 		defaults: {
 			name: 'Waalaxy',
 		},

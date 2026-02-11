@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import { JsonObject, NodeApiError, type INodeProperties } from 'n8n-workflow';
 import { addToListAndCampaignDescription } from './addToListAndCampaign';
 
 const showOnlyForProspect = {
@@ -24,6 +24,7 @@ export const prospectDescription: INodeProperties[] = [
 					request: {
 						method: 'POST',
 						url: 'prospects/addProspectFromIntegration',
+						ignoreHttpStatusErrors: true, // Permet d'intercepter les erreurs dans postReceive
 					},
 					send: {
 						type: 'body',
@@ -130,6 +131,36 @@ export const prospectDescription: INodeProperties[] = [
 								};
 
 								return requestOptions;
+							},
+						],
+					},
+					output: {
+						postReceive: [
+							async function (this, items, responseData) {
+								const statusCode = responseData.statusCode;
+
+								if (statusCode >= 400) {
+									const errorBody = (items[0]?.json || {}) as JsonObject;
+
+									let message =
+										'detail' in errorBody
+											? (errorBody.detail as string)
+											: (errorBody.message as string);
+
+									if ('code' in errorBody && errorBody.code === 'M000401-001') {
+										message = "User doesn't have permissions. Should upgrade plan.";
+									}
+									if ('code' in errorBody && errorBody.code === 'R000404-002') {
+										message = 'Prospect List could not be found.';
+									}
+
+									throw new NodeApiError(this.getNode(), errorBody, {
+										message: message,
+										httpCode: String(statusCode),
+									});
+								}
+
+								return items;
 							},
 						],
 					},
