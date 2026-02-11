@@ -4,7 +4,7 @@
 ![n8n](https://img.shields.io/badge/n8n-Community%20Node-FF6D5A?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-This is an n8n community node that integrates [Waalaxy](https://waalaxy.com) with your n8n workflows. Waalaxy is a LinkedIn automation tool that helps you automate your prospecting and outreach campaigns.
+This is an n8n community node that integrates [Waalaxy](https://waalaxy.com?o=n8n) with your n8n workflows. Waalaxy is a LinkedIn automation tool that helps you automate your prospecting and outreach campaigns.
 
 ## Table of Contents
 
@@ -59,10 +59,11 @@ Before using this node, you need to configure your Waalaxy API credentials.
 
 ### Obtaining Your Access Token
 
-1. Log in to your [Waalaxy account](https://app.waalaxy.com)
-2. Navigate to your account settings
-3. Find the Integration section and generate an access token
-4. Copy the token and paste it into n8n
+1. First, you need to [create Waalaxy account](https://waalaxy.com?o=n8n)
+1. Log in to your Waalaxy account
+1. Navigate to your Settings, [Integrations section](https://app.waalaxy.com/settings/crm-sync)
+1. Generate an access token
+1. Copy the token and paste it into n8n
 
 > **Note:** Keep your access token secure and never share it publicly.
 
