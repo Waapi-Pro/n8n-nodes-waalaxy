@@ -153,6 +153,12 @@ export const prospectDescription: INodeProperties[] = [
 									if ('code' in errorBody && errorBody.code === 'R000404-002') {
 										message = 'Prospect List could not be found.';
 									}
+									if ('code' in errorBody && errorBody.code === 'R000401-003') {
+										message = 'Prospect LinkedIn URL is not valid.';
+									}
+									if ('code' in errorBody && errorBody.code === 'R000401-004') {
+										message = "You've reached the limit of prospects in your list or in your CRM.";
+									}
 
 									throw new NodeApiError(this.getNode(), errorBody, {
 										message: message,
