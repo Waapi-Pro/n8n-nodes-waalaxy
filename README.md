@@ -94,10 +94,8 @@ Add prospects to a prospect list and optionally enroll them in a campaign.
 | Company Name         | String     | No       | The name of the prospect's company                     |
 | Company LinkedIn URL | String     | No       | The LinkedIn URL of the prospect's company             |
 | Company Website      | String     | No       | The website of the prospect's company                  |
-| Headline             | String     | No       | The headline of the prospect (e.g. LinkedIn headline)  |
 | Occupation           | String     | No       | The occupation of the prospect                         |
 | Region               | String     | No       | The region/location of the prospect                    |
-| Gender               | Select     | No       | Gender of the prospect (Male, Female, Undetermined)    |
 | Birthday Day         | Number     | No       | The day of the month of the prospect's birthday (1-31) |
 | Birthday Month       | Number     | No       | The month of the prospect's birthday (1-12)            |
 | Phone Numbers        | Collection | No       | Phone numbers with type (Mobile, Work, Home, Other)    |

@@ -83,34 +83,6 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 						description: 'The first name of the prospect you want to import into Waalaxy',
 					},
 					{
-						displayName: 'Gender',
-						name: 'gender',
-						type: 'options',
-						options: [
-							{
-								name: 'Male',
-								value: 'male',
-							},
-							{
-								name: 'Female',
-								value: 'female',
-							},
-							{
-								name: 'Undetermined',
-								value: 'undetermined',
-							},
-						],
-						default: 'undetermined',
-						description: 'The gender of the prospect',
-					},
-					{
-						displayName: 'Headline',
-						name: 'headline',
-						type: 'string',
-						default: '',
-						description: 'The headline of the prospect (e.g. their LinkedIn headline)',
-					},
-					{
 						displayName: 'Last Name',
 						name: 'lastName',
 						type: 'string',
@@ -206,6 +178,15 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 		default: false,
 		description:
 			'Whether to allow creating duplicate prospects. If true, even if a member of your team has the same prospect, then the prospect will still be imported.',
+		displayOptions: { show: showOnlyForAddToListAndCampaign },
+	},
+	{
+		displayName: 'Add Existing Prospects To Campaign',
+		name: 'addDuplicateProspectsToCampaign',
+		type: 'boolean',
+		default: false,
+		description:
+			'Whether to add existing prospects to the selected campaign. If enabled, any already existing prospects found in your Waalaxy CRM will also be added to the selected campaign.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
 	},
 ];

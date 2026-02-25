@@ -36,13 +36,15 @@ export const prospectDescription: INodeProperties[] = [
 									'moveDuplicatesToOtherList',
 								) as boolean;
 								const canCreateDuplicates = this.getNodeParameter('canCreateDuplicates') as boolean;
+								const addDuplicateProspectsToCampaign = this.getNodeParameter(
+									'addDuplicateProspectsToCampaign',
+								) as boolean;
+
 								const prospectsParam = this.getNodeParameter('prospects') as {
 									prospectValues?: Array<{
 										url: string;
 										firstName?: string;
 										lastName?: string;
-										gender?: 'male' | 'female' | 'undetermined';
-										headline?: string;
 										occupation?: string;
 										email?: string;
 										phoneNumbers?: {
@@ -66,8 +68,6 @@ export const prospectDescription: INodeProperties[] = [
 										customProfile?: {
 											firstName?: string;
 											lastName?: string;
-											gender?: 'male' | 'female' | 'undetermined';
-											headline?: string;
 											occupation?: string;
 											email?: string;
 											phoneNumbers?: Array<{ number?: string; type?: string }>;
@@ -83,8 +83,6 @@ export const prospectDescription: INodeProperties[] = [
 
 									if (p.firstName) customProfile.firstName = p.firstName;
 									if (p.lastName) customProfile.lastName = p.lastName;
-									if (p.gender) customProfile.gender = p.gender;
-									if (p.headline) customProfile.headline = p.headline;
 									if (p.occupation) customProfile.occupation = p.occupation;
 									if (p.email) customProfile.email = p.email;
 									if (p.region) customProfile.region = p.region;
@@ -127,6 +125,7 @@ export const prospectDescription: INodeProperties[] = [
 									...(campaign?.value && { campaignId: campaign.value }),
 									moveDuplicatesToOtherList,
 									canCreateDuplicates,
+									addDuplicateProspectsToCampaign,
 									origin: { name: 'n8n' },
 								};
 
