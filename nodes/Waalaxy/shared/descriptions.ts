@@ -4,7 +4,7 @@ export const campaignSelect: INodeProperties = {
 	displayName: 'Campaign',
 	name: 'campaign',
 	description:
-		'If you want to run the prospect in a campaign, then select the campaign you want your imported prospect to un in',
+		'If you want to run the prospect in a campaign, then select the campaign you want your imported prospect to run in',
 	type: 'resourceLocator',
 	default: { mode: 'list', value: '' },
 	modes: [

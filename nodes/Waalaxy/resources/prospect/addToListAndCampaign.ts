@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-param-fixed-collection-type-unsorted-items */
 import type { INodeProperties } from 'n8n-workflow';
 import { campaignSelect, prospectListSelect } from '../../shared/descriptions';
 
@@ -33,63 +34,6 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 				displayName: 'Prospect',
 				values: [
 					{
-						displayName: 'Birthday Day',
-						name: 'birthdayDay',
-						type: 'number',
-						default: '',
-						description: "The day of the month of the prospect's birthday (1-31)",
-					},
-					{
-						displayName: 'Birthday Month',
-						name: 'birthdayMonth',
-						type: 'number',
-						default: '',
-						description: "The month of the prospect's birthday (1-12)",
-					},
-					{
-						displayName: 'Company LinkedIn URL',
-						name: 'companyLinkedinUrl',
-						type: 'string',
-						default: '',
-						description: "The LinkedIn URL of the prospect's company",
-					},
-					{
-						displayName: 'Company Name',
-						name: 'companyName',
-						type: 'string',
-						default: '',
-						description: "The name of the prospect's company",
-					},
-					{
-						displayName: 'Company Website',
-						name: 'companyWebsite',
-						type: 'string',
-						default: '',
-						description: "The website of the prospect's company",
-					},
-					{
-						displayName: 'Email',
-						name: 'email',
-						type: 'string',
-						placeholder: 'name@email.com',
-						default: '',
-						description: 'The email address of the prospect',
-					},
-					{
-						displayName: 'First Name',
-						name: 'firstName',
-						type: 'string',
-						default: '',
-						description: 'The first name of the prospect you want to import into Waalaxy',
-					},
-					{
-						displayName: 'Last Name',
-						name: 'lastName',
-						type: 'string',
-						default: '',
-						description: 'The last name of the prospect you want to import into Waalaxy',
-					},
-					{
 						displayName: 'LinkedIn Url',
 						name: 'url',
 						type: 'string',
@@ -98,11 +42,40 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 						description: 'The LinkedIn URL of the prospect you want to import in Waalaxy',
 					},
 					{
+						displayName: 'First Name',
+						name: 'firstName',
+						type: 'string',
+						default: '',
+						description: 'The first name of the prospect',
+					},
+					{
+						displayName: 'Last Name',
+						name: 'lastName',
+						type: 'string',
+						default: '',
+						description: 'The last name of the prospect',
+					},
+					{
+						displayName: 'Email',
+						name: 'email',
+						type: 'string',
+						placeholder: 'name@email.com',
+						default: '',
+						description: 'Email address of the prospect',
+					},
+					{
 						displayName: 'Occupation',
 						name: 'occupation',
 						type: 'string',
 						default: '',
-						description: 'The occupation of the prospect',
+						description: 'Occupation of the prospect',
+					},
+					{
+						displayName: 'Company Name',
+						name: 'companyName',
+						type: 'string',
+						default: '',
+						description: 'Company name of the prospect',
 					},
 					{
 						displayName: 'Phone Numbers',
@@ -156,19 +129,33 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 						name: 'region',
 						type: 'string',
 						default: '',
-						description: 'The region/location of the prospect',
+						description: 'Region of the prospect',
+					},
+					{
+						displayName: 'Birthday Day',
+						name: 'birthdayDay',
+						type: 'number',
+						default: '',
+						description: "The day of the month of the prospect's birthday (1-31)",
+					},
+					{
+						displayName: 'Birthday Month',
+						name: 'birthdayMonth',
+						type: 'number',
+						default: '',
+						description: "The month of the prospect's birthday (1-12)",
 					},
 				],
 			},
 		],
 	},
 	{
-		displayName: 'Move Duplicates',
+		displayName: 'Move Existing Prospects',
 		name: 'moveDuplicatesToOtherList',
 		type: 'boolean',
 		default: false,
 		description:
-			'Whether to move duplicates to this list. If the imported prospect already exists in your CRM in another list, enabling this option will move the prospect to the selected list.',
+			'Whether to move existing prospects to this list. If the imported prospect already exists in your Waalaxy in another list, enabling this option will move the prospect to the selected list.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
 	},
 	{
