@@ -34,7 +34,7 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 				displayName: 'Prospect',
 				values: [
 					{
-						displayName: 'LinkedIn Url',
+						displayName: 'LinkedIn URL',
 						name: 'url',
 						type: 'string',
 						default: '',
