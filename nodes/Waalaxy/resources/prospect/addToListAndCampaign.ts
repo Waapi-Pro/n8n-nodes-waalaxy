@@ -155,7 +155,7 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 		type: 'boolean',
 		default: false,
 		description:
-			'Whether to move existing prospects to this list. If the imported prospect already exists in your Waalaxy in another list, enabling this option will move the prospect to the selected list.',
+			'If enabled, prospects already in your Waalaxy CRM will be moved to this list, even if they belong to another one. Disable this option to keep prospects in their current list.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
 	},
 	{
@@ -164,7 +164,7 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 		type: 'boolean',
 		default: false,
 		description:
-			'Whether to allow creating duplicate prospects. If true, even if a member of your team has the same prospect, then the prospect will still be imported.',
+			'If enabled, prospects already present in a teammate’s Waalaxy CRM will still be imported into yours. Disable this option if you want to avoid duplicates across your team.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
 	},
 	{

@@ -1,10 +1,9 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 export const campaignSelect: INodeProperties = {
-	displayName: 'Campaign',
+	displayName: 'Add to Existing Campaign',
 	name: 'campaign',
-	description:
-		'If you want to run the prospect in a campaign, then select the campaign you want your imported prospect to run in',
+	description: 'If a campaign is selected, imported prospects will automatically be added to it.',
 	type: 'resourceLocator',
 	default: { mode: 'list', value: '' },
 	modes: [
