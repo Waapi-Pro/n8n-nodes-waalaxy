@@ -187,6 +187,7 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 		name: 'moveDuplicatesToOtherList',
 		type: 'boolean',
 		default: false,
+		// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
 		description:
 			'If enabled, prospects already in your Waalaxy CRM will be moved to this list, even if they belong to another one. Disable this option to keep prospects in their current list.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
@@ -196,6 +197,7 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 		name: 'canCreateDuplicates',
 		type: 'boolean',
 		default: false,
+		// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
 		description:
 			'If enabled, prospects already present in a teammate’s Waalaxy CRM will still be imported into yours. Disable this option if you want to avoid duplicates across your team.',
 		displayOptions: { show: showOnlyForAddToListAndCampaign },
