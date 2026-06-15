@@ -145,6 +145,39 @@ export const addToListAndCampaignDescription: INodeProperties[] = [
 						default: '',
 						description: "The month of the prospect's birthday (1-12)",
 					},
+					{
+						displayName: 'Custom Variables',
+						name: 'customVariables',
+						type: 'fixedCollection',
+						default: {},
+						typeOptions: {
+							multipleValues: true,
+						},
+						description:
+							'Optional list of custom variables to attach to the prospect. Each entry is a key-value pair where Label is the variable name and Value is its value.',
+						options: [
+							{
+								name: 'customVariableValues',
+								displayName: 'Custom Variable',
+								values: [
+									{
+										displayName: 'Label',
+										name: 'label',
+										type: 'string',
+										default: '',
+										description: 'The variable name',
+									},
+									{
+										displayName: 'Value',
+										name: 'value',
+										type: 'string',
+										default: '',
+										description: 'The variable value',
+									},
+								],
+							},
+						],
+					},
 				],
 			},
 		],

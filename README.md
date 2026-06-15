@@ -99,6 +99,14 @@ Add prospects to a prospect list and optionally enroll them in a campaign.
 | Birthday Day         | Number     | No       | The day of the month of the prospect's birthday (1-31) |
 | Birthday Month       | Number     | No       | The month of the prospect's birthday (1-12)            |
 | Phone Numbers        | Collection | No       | Phone numbers with type (Mobile, Work, Home, Other)    |
+| Custom Variables     | Collection | No       | Key-value pairs to attach custom variables to the prospect (label + value) |
+
+**Custom Variable Fields:**
+
+| Field | Type   | Required | Description              |
+| ----- | ------ | -------- | ------------------------ |
+| Label | String | Yes      | The name of the variable |
+| Value | String | Yes      | The value of the variable |
 
 ## Usage Examples
 

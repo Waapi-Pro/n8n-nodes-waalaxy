@@ -59,12 +59,19 @@ export const prospectDescription: INodeProperties[] = [
 										companyName?: string;
 										companyLinkedinUrl?: string;
 										companyWebsite?: string;
+										customVariables?: {
+											customVariableValues?: Array<{
+												label?: string;
+												value?: string;
+											}>;
+										};
 									}>;
 								};
 
 								const prospects = (prospectsParam.prospectValues || []).map((p) => {
 									const prospect: {
 										url: string;
+										customVariables?: Array<{ label: string; value: string }>;
 										customProfile?: {
 											firstName?: string;
 											lastName?: string;
@@ -114,6 +121,17 @@ export const prospectDescription: INodeProperties[] = [
 
 									if (Object.keys(customProfile).length > 0) {
 										prospect.customProfile = customProfile;
+									}
+
+									const customVariableValues = p.customVariables?.customVariableValues;
+
+									if (customVariableValues && customVariableValues.length > 0) {
+										const customVariables = customVariableValues
+											.filter((cv) => cv.label && cv.value)
+											.map((cv) => ({ label: cv.label!, value: cv.value! }));
+										if (customVariables.length > 0) {
+											prospect.customVariables = customVariables;
+										}
 									}
 
 									return prospect;
