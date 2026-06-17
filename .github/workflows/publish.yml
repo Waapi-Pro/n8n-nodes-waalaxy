@@ -1,0 +1,73 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Ensure npm >= 11.5.1 (Trusted Publishing)
+        run: npm install -g "npm@^11.5.1"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run build
+        run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Extract release version
+        id: release_version
+        run: |
+          FULL_TAG_NAME="${{ github.event.release.tag_name }}"
+          VERSION_NUMBER="${FULL_TAG_NAME#v}"
+          echo "version=${VERSION_NUMBER}" >> "$GITHUB_OUTPUT"
+
+      - name: Sync package.json version with release tag
+        run: npm version "${{ steps.release_version.outputs.version }}" --no-git-tag-version --allow-same-version
+
+      - name: Commit version bump back to target branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add package.json package-lock.json
+          if ! git diff --staged --quiet; then
+            TARGET_BRANCH="${{ github.event.release.target_commitish }}"
+            git commit -m "chore(release): set version to ${{ steps.release_version.outputs.version }} [skip ci]"
+            git push origin HEAD:"refs/heads/$TARGET_BRANCH"
+          else
+            echo "No version change to commit."
+          fi
+
+      - name: Publish to npm with provenance (OIDC Trusted Publishing)
+        run: |
+          if npm view @waapi/n8n-nodes-waalaxy@${{ steps.release_version.outputs.version }} version > /dev/null 2>&1; then
+            echo "Version ${{ steps.release_version.outputs.version }} already published. Skipping."
+          else
+            npm publish --provenance --access public --ignore-scripts
+          fi

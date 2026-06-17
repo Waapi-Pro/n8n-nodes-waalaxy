@@ -3,7 +3,7 @@
     "version": "1.2.0",
     "description": "Waalaxy integration for n8n",
     "license": "MIT",
-    "homepage": "",
+    "homepage": "https://github.com/Waapi-Pro/n8n-nodes-waalaxy",
     "keywords": [
         "n8n-community-node-package",
         "n8n-nodes",
@@ -11,6 +11,7 @@
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
+        "provenance": true,
         "access": "public"
     },
     "author": {
